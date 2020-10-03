@@ -9,6 +9,28 @@ function xScale(stateData, chosenXAxis) {
 
   return xLinearScale;
 
+  function renderAxes(newXScale, xAxis) {
+
+    const bottomAxis = d3.axisBottom(newXScale);
+
+    xAxis.transition()
+      .duration(1000)
+      .call(bottomAxis);
+    
+
+    return xAxis;
+  }
+
+  function renderCircles(circlesGroup, newXScale, chosenXAxis) {
+  
+    circlesGroup.transition()
+      .duration(1000)
+      .attr("cx", d => newXScale(d[chosenXAxis]));
+  
+    return circlesGroup;
+  }
+
+  
 
 
 }
