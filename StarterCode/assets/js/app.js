@@ -1,4 +1,17 @@
 // @TODO: YOUR CODE HERE!
+function xScale(stateData, chosenXAxis) {
+  
+  const xLinearScale = d3.scaleLinear()
+      .domain([d3.min(stateData, d => d[chosenXAxis]) * 0.5,
+        d3.max(stateData, d => d[chosenXAxis]) * 0.5
+    ])
+    .range([0, width]);
+
+  return xLinearScale;
+
+
+
+}
 
 
 
@@ -24,7 +37,18 @@
 
 
 
+d3.csv("./assets/data/data.csv").then (function(stateData, err) {
+    if (err) throw err;
 
+    console.log(stateData);
+
+
+
+
+
+}).catch(function(error) {
+  console.log(error);
+});
 
 
 var svgWidth = 960;
