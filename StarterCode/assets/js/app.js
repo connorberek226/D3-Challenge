@@ -29,6 +29,7 @@ d3.csv("assets/data/data.csv").then(function(stateData, err) {
         data.poverty = +data.poverty;
         data.age = +data.age;
         data.income = +data.income;
+        data.healthcare = +data.healthcare;
         data.healthcareLow = +data.healthcareLow;
         data.obesity = +data.obesity;
         data.smokes = +data.smokes;
@@ -39,7 +40,7 @@ d3.csv("assets/data/data.csv").then(function(stateData, err) {
       .range([0, width]);
 
     const yLinearScale = d3.scaleLinear()
-      .domain([0, d3.max(stateData, d => d.healthcareLow) + 8])
+      .domain([0, d3.max(stateData, d => d.healthcare) + 8])
       .range([height, 0]);
 
     const bottomAxis = d3.axisBottom(xLinearScale);
@@ -58,7 +59,7 @@ d3.csv("assets/data/data.csv").then(function(stateData, err) {
       .enter()
       .append("circle")
       .attr("cx", d => xLinearScale(d.income))
-      .attr("cy", d => yLinearScale(d.healthcareLow))
+      .attr("cy", d => yLinearScale(d.healthcare))
       .attr("r", "15")
       .attr("fill", "teal")
       .attr("opacity", "1")
@@ -71,7 +72,7 @@ d3.csv("assets/data/data.csv").then(function(stateData, err) {
       .classed("text-group", true)
       .text(d => d.abbr)
       .attr("x", d => xLinearScale(d.income))
-      .attr("y", d => yLinearScale(d.healthcareLow))
+      .attr("y", d => yLinearScale(d.healthcare))
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "central")
       .attr("font_family", "sans-serif")  // Font type
@@ -83,7 +84,7 @@ d3.csv("assets/data/data.csv").then(function(stateData, err) {
       .attr("class", "tooltip")
       .offset([80, -60])
       .html(function(d) {
-          return `${d.name}<br>Household Income: ${d.income}<br>Lack Health Care: ${d.healthcareLow}`
+          return `${d.name}<br>Household Income: ${d.income}<br>Lack Health Care: ${d.healthcare}%`
     });
 
     chartGroup.call(toolTip);
