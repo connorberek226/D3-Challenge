@@ -28,7 +28,7 @@ By utilizing D3 library, javascript and html, I was able to design a page that s
 
 ### Dataset
 
-* [State Data](assets/data/data.csv)
+* [State Data](Starter Code/assets/data/data.csv)
 
 - - -
 ### Resources
