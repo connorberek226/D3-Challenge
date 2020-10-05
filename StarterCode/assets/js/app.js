@@ -75,9 +75,9 @@ d3.csv("assets/data/data.csv").then(function(stateData, err) {
       .attr("y", d => yLinearScale(d.healthcare))
       .attr("text-anchor", "middle")
       .attr("alignment-baseline", "central")
-      .attr("font_family", "sans-serif")  // Font type
-      .attr("font-size", "11px")  // Font size
-      .attr("fill", "white")   // Font color
+      .attr("font_family", "sans-serif")  
+      .attr("font-size", "12px")
+      .attr("fill", "white")
       .style("font-weight", "bold");
 
     const toolTip = d3.tip()
